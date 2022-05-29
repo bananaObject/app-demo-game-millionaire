@@ -7,23 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F21F91AC284284E500FE082E /* MyAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21F91AB284284E500FE082E /* MyAssets.swift */; };
+		F21F91B028428BDF00FE082E /* GameButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21F91AF28428BDF00FE082E /* GameButton.swift */; };
 		F2DFD45E2842002000E64D40 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DFD45D2842002000E64D40 /* AppDelegate.swift */; };
 		F2DFD4602842002000E64D40 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DFD45F2842002000E64D40 /* SceneDelegate.swift */; };
-		F2DFD4622842002000E64D40 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DFD4612842002000E64D40 /* ViewController.swift */; };
-		F2DFD4652842002000E64D40 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2DFD4632842002000E64D40 /* Main.storyboard */; };
 		F2DFD4672842002200E64D40 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2DFD4662842002200E64D40 /* Assets.xcassets */; };
 		F2DFD46A2842002200E64D40 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2DFD4682842002200E64D40 /* LaunchScreen.storyboard */; };
+		F2DFD4722842055400E64D40 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DFD4712842055400E64D40 /* MainViewController.swift */; };
+		F2DFD475284206B100E64D40 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = F2DFD474284206B100E64D40 /* .swiftlint.yml */; };
+		F2DFD47728420E5300E64D40 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = F2DFD47628420E5300E64D40 /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F21F91AB284284E500FE082E /* MyAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAssets.swift; sourceTree = "<group>"; };
+		F21F91AF28428BDF00FE082E /* GameButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameButton.swift; sourceTree = "<group>"; };
 		F2DFD45A2842002000E64D40 /* millionaireGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = millionaireGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2DFD45D2842002000E64D40 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F2DFD45F2842002000E64D40 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F2DFD4612842002000E64D40 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		F2DFD4642842002000E64D40 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F2DFD4662842002200E64D40 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F2DFD4692842002200E64D40 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F2DFD46B2842002200E64D40 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F2DFD4712842055400E64D40 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		F2DFD474284206B100E64D40 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		F2DFD47628420E5300E64D40 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +43,59 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F21F91A9284284A100FE082E /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				F21F91AD284285A700FE082E /* Main */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		F21F91AA284284AE00FE082E /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				F21F91AB284284E500FE082E /* MyAssets.swift */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		F21F91AD284285A700FE082E /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				F2DFD4712842055400E64D40 /* MainViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		F21F91AE28428BCB00FE082E /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				F21F91AF28428BDF00FE082E /* GameButton.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		F22FCF8D284283D500A51851 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				F2DFD474284206B100E64D40 /* .swiftlint.yml */,
+				F2DFD47628420E5300E64D40 /* .gitignore */,
+				F2DFD4662842002200E64D40 /* Assets.xcassets */,
+				F2DFD4682842002200E64D40 /* LaunchScreen.storyboard */,
+				F2DFD46B2842002200E64D40 /* Info.plist */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		F22FCF8E284283EC00A51851 /* App Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				F2DFD45D2842002000E64D40 /* AppDelegate.swift */,
+				F2DFD45F2842002000E64D40 /* SceneDelegate.swift */,
+			);
+			path = "App Delegate";
+			sourceTree = "<group>";
+		};
 		F2DFD4512842002000E64D40 = {
 			isa = PBXGroup;
 			children = (
@@ -56,13 +115,11 @@
 		F2DFD45C2842002000E64D40 /* millionaireGame */ = {
 			isa = PBXGroup;
 			children = (
-				F2DFD45D2842002000E64D40 /* AppDelegate.swift */,
-				F2DFD45F2842002000E64D40 /* SceneDelegate.swift */,
-				F2DFD4612842002000E64D40 /* ViewController.swift */,
-				F2DFD4632842002000E64D40 /* Main.storyboard */,
-				F2DFD4662842002200E64D40 /* Assets.xcassets */,
-				F2DFD4682842002200E64D40 /* LaunchScreen.storyboard */,
-				F2DFD46B2842002200E64D40 /* Info.plist */,
+				F22FCF8E284283EC00A51851 /* App Delegate */,
+				F21F91A9284284A100FE082E /* Screens */,
+				F21F91AE28428BCB00FE082E /* UI */,
+				F21F91AA284284AE00FE082E /* Support */,
+				F22FCF8D284283D500A51851 /* Resource */,
 			);
 			path = millionaireGame;
 			sourceTree = "<group>";
@@ -77,6 +134,7 @@
 				F2DFD4562842002000E64D40 /* Sources */,
 				F2DFD4572842002000E64D40 /* Frameworks */,
 				F2DFD4582842002000E64D40 /* Resources */,
+				F2DFD473284205F700E64D40 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -125,36 +183,51 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2DFD47728420E5300E64D40 /* .gitignore in Resources */,
+				F2DFD475284206B100E64D40 /* .swiftlint.yml in Resources */,
 				F2DFD46A2842002200E64D40 /* LaunchScreen.storyboard in Resources */,
 				F2DFD4672842002200E64D40 /* Assets.xcassets in Resources */,
-				F2DFD4652842002000E64D40 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		F2DFD473284205F700E64D40 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nexport PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F2DFD4562842002000E64D40 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F2DFD4622842002000E64D40 /* ViewController.swift in Sources */,
 				F2DFD45E2842002000E64D40 /* AppDelegate.swift in Sources */,
+				F21F91AC284284E500FE082E /* MyAssets.swift in Sources */,
 				F2DFD4602842002000E64D40 /* SceneDelegate.swift in Sources */,
+				F2DFD4722842055400E64D40 /* MainViewController.swift in Sources */,
+				F21F91B028428BDF00FE082E /* GameButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		F2DFD4632842002000E64D40 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F2DFD4642842002000E64D40 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		F2DFD4682842002200E64D40 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -289,10 +362,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 97UL48L835;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = millionaireGame/Info.plist;
+				INFOPLIST_FILE = millionaireGame/Resource/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -317,10 +389,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 97UL48L835;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = millionaireGame/Info.plist;
+				INFOPLIST_FILE = millionaireGame/Resource/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
