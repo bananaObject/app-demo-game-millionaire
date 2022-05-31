@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ResultsCaretaker {
+class ResultsCaretakerLayer {
     // MARK: - Private Properties
     private let encoder = JSONEncoder()
     private let decoder = JSONDecoder()
@@ -15,7 +15,7 @@ class ResultsCaretaker {
     private let key = "records"
 
     // MARK: - Public Methods
-    func save(records: [Result]) {
+    func save(records: [ResultModel]) {
         do {
             let data = try self.encoder.encode(records)
             UserDefaults.standard.set(data, forKey: key)
@@ -24,12 +24,12 @@ class ResultsCaretaker {
         }
     }
 
-    func retrieveResults() -> [Result] {
+    func retrieveResults() -> [ResultModel] {
         guard let data = UserDefaults.standard.data(forKey: key) else {
             return []
         }
         do {
-            return try self.decoder.decode([Result].self, from: data)
+            return try self.decoder.decode([ResultModel].self, from: data)
         } catch {
             print(error)
             return []

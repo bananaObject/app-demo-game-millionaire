@@ -78,7 +78,7 @@ final class GameViewController: UIViewController {
         Task {
             configure()
             let name = await presentNameAlertAsync()
-            Game.shared.newGame(name: name)
+            GameLayer.shared.newGame(name: name)
         }
     }
 

@@ -1,5 +1,5 @@
 //
-//  GameSession.swift
+//  GameSessionModel.swift
 //  millionaireGame
 //
 //  Created by Ke4a on 30.05.2022.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class GameSession {
+final class GameSessionModel {
     var name: String
     var level: Int = 0
     var history: [[String]] = []

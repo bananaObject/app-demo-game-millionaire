@@ -27,7 +27,7 @@ final class ResultsViewController: UIViewController {
     }()
 
     // MARK: - Private Properties
-    private let data = Game.shared.results
+    private let data = GameLayer.shared.results
 
     // MARK: - Lifecycle
     override func viewDidLoad() {

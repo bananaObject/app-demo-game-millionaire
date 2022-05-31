@@ -7,19 +7,12 @@
 
 import Foundation
 
-struct Questions {
-    let level: Int
-    let questions: String
-    let answers: [String]
-    let correctAnswer: String
-}
-
-protocol GameHelper {
+protocol GameProviderHelper {
     var dataMoney: [String] { get }
-    var dataQuestions: [Questions] { get }
+    var dataQuestions: [QuestionsModel] { get }
 }
 
-extension GameHelper {
+extension GameProviderHelper {
     // MARK: - Computed Properties
     var dataMoney: [String] {
         ["500", "1 000",
@@ -31,8 +24,8 @@ extension GameHelper {
          "800 000", "1 500 000",
          "3 000 000"]
     }
-    var dataQuestions: [Questions] { [
-        Questions(
+    var dataQuestions: [QuestionsModel] { [
+        QuestionsModel(
             level: 0,
             questions: "Чем обмениваются новобрачные в ЗАГСе?",
             answers: ["Телефонами",
@@ -40,7 +33,7 @@ extension GameHelper {
                       "Кольцами",
                       "Рукопожатиями"],
             correctAnswer: "Кольцами"),
-        Questions(
+        QuestionsModel(
             level: 1,
             questions: "Что делает парикмахер на голове клиента?",
             answers: ["Воронку",
@@ -48,7 +41,7 @@ extension GameHelper {
                       "Попугайку",
                       "Ласточку"],
             correctAnswer: "Стрижку"),
-        Questions(
+        QuestionsModel(
             level: 2,
             questions: "Что держит в руке американская статуя Свободы?",
             answers: ["Фонарь",
@@ -56,7 +49,7 @@ extension GameHelper {
                       "Факел",
                       "Зажигалку"],
             correctAnswer: "Факел"),
-        Questions(
+        QuestionsModel(
             level: 3,
             questions: "Что является характеристикой коллекционного вина?",
             answers: ["Стойкость",
@@ -64,7 +57,7 @@ extension GameHelper {
                       "Выдержка",
                       "Трезвость"],
             correctAnswer: "Выдержка"),
-        Questions(
+        QuestionsModel(
             level: 4,
             questions: "Какая нота дважды встречалась в названии фильма Георгия Данелии?",
             answers: ["До",
@@ -72,7 +65,7 @@ extension GameHelper {
                       "Фа",
                       "Ми"],
             correctAnswer: "Ми"),
-        Questions(
+        QuestionsModel(
             level: 5,
             questions: "В какое море впадает Хуанхэ — Жёлтая река?",
             answers: ["В Красное",
@@ -80,7 +73,7 @@ extension GameHelper {
                       "В Белое",
                       "В Чёрное"],
             correctAnswer: "В Жёлтое"),
-        Questions(
+        QuestionsModel(
             level: 6,
             questions: "Кольцо какого цвета на олимпийском флаге символизирует Европу?",
             answers: ["Голубое",
