@@ -84,15 +84,15 @@
 			path = Screens;
 			sourceTree = "<group>";
 		};
-		F21F91AA284284AE00FE082E /* Support */ = {
+		F21F91AA284284AE00FE082E /* Supports */ = {
 			isa = PBXGroup;
 			children = (
 				F27858B328437DEA007895C5 /* Providers */,
-				F279BE5D284646F7000ECC3A /* Layer */,
+				F279BE5D284646F7000ECC3A /* Layers */,
 				F279BE5728464589000ECC3A /* Helpers */,
 				F279BE5528464567000ECC3A /* My assets */,
 			);
-			path = Support;
+			path = Supports;
 			sourceTree = "<group>";
 		};
 		F21F91AD284285A700FE082E /* Main */ = {
@@ -111,7 +111,7 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
-		F22FCF8D284283D500A51851 /* Resource */ = {
+		F22FCF8D284283D500A51851 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				F213294C2846145900BA229A /* Assets.xcassets */,
@@ -120,7 +120,7 @@
 				F2DFD46B2842002200E64D40 /* Info.plist */,
 				F2132948284612B500BA229A /* LaunchScreen.storyboard */,
 			);
-			path = Resource;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		F22FCF8E284283EC00A51851 /* App Delegate */ = {
@@ -207,13 +207,13 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		F279BE5D284646F7000ECC3A /* Layer */ = {
+		F279BE5D284646F7000ECC3A /* Layers */ = {
 			isa = PBXGroup;
 			children = (
 				F279BE6328464728000ECC3A /* GameLayer.swift */,
 				F279BE4D284629C1000ECC3A /* ResultsCaretakerLayer.swift */,
 			);
-			path = Layer;
+			path = Layers;
 			sourceTree = "<group>";
 		};
 		F2DFD4512842002000E64D40 = {
@@ -238,9 +238,9 @@
 				F22FCF8E284283EC00A51851 /* App Delegate */,
 				F21F91A9284284A100FE082E /* Screens */,
 				F21F91AE28428BCB00FE082E /* UI */,
-				F21F91AA284284AE00FE082E /* Support */,
+				F21F91AA284284AE00FE082E /* Supports */,
 				F279BE58284645B7000ECC3A /* Models */,
-				F22FCF8D284283D500A51851 /* Resource */,
+				F22FCF8D284283D500A51851 /* Resources */,
 			);
 			path = millionaireGame;
 			sourceTree = "<group>";
