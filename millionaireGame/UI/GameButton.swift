@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GameButton: UIButton {
+final class GameButton: UIButton {
     // MARK: - Computed Properties
     private var height: Double {
         frame.size.height
@@ -33,7 +33,6 @@ class GameButton: UIButton {
     // MARK: - Override Methods
     override func layoutSubviews() {
         super.layoutSubviews()
-
         shapeLayer.path = createBezierPathCGPath()
     }
 
@@ -44,21 +43,68 @@ class GameButton: UIButton {
         }
         return nil
     }
-
     // MARK: - Public Methods
+    func prepareForReuse() {
+        Task {
+            shapeLayer.fillColor = backgroundColor?.cgColor
+            shapeLayer.strokeColor = MyColor.border.cgColor
+            await animationChoiceAsync(fixColor: false)
+            isEnabled = true
+        }
+    }
+
     func setTextButton(text: String) {
         self.setTitle(text, for: .normal)
     }
 
-    func animationColor(color: UIColor, duration: CFTimeInterval, repeatCount: Float, autoreverses: Bool = false) {
-        let animcolor = CABasicAnimation(keyPath: "strokeColor")
-        animcolor.fromValue = shapeLayer.strokeColor
-        animcolor.toValue = color.cgColor
-        animcolor.duration = duration
-        animcolor.repeatCount = repeatCount
-        animcolor.autoreverses = autoreverses
-        animcolor.isRemovedOnCompletion = true
-        shapeLayer.add(animcolor, forKey: "strokeColor")
+    func animationAnswerAsync(isCorrectAnswer correct: Bool, fixColor change: Bool) async {
+        return await withCheckedContinuation { continuation in
+            isEnabled = false
+            let duration = 0.20
+            let repeatCount: Float = 2
+            let color = correct ? UIColor.systemGreen.cgColor :  UIColor.systemRed.cgColor
+
+            let animcolor = CABasicAnimation(keyPath: "fillColor")
+            animcolor.fromValue = shapeLayer.fillColor
+            animcolor.toValue = color
+            animcolor.duration = duration
+            animcolor.repeatCount = 2
+            animcolor.autoreverses = true
+            animcolor.isRemovedOnCompletion = true
+            shapeLayer.add(animcolor, forKey: "fillColor")
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + (duration * Double(repeatCount)) * 2) {
+                if change {
+                    self.shapeLayer.fillColor = color
+                }
+                continuation.resume()
+            }
+        }
+    }
+
+    func animationChoiceAsync(fixColor change: Bool) async {
+        return await withCheckedContinuation { continuation in
+            isEnabled = false
+            let duration = 0.16
+            let repeatCount: Float = 2
+            let color = UIColor.white.cgColor
+
+            let animcolor = CABasicAnimation(keyPath: "strokeColor")
+            animcolor.fromValue = shapeLayer.fillColor
+            animcolor.toValue = color
+            animcolor.duration = duration
+            animcolor.repeatCount = repeatCount
+            animcolor.autoreverses = true
+            animcolor.isRemovedOnCompletion = true
+            shapeLayer.add(animcolor, forKey: "strokeColor")
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + (duration * Double(repeatCount)) * 2 ) {
+                if change {
+                    self.shapeLayer.strokeColor = color
+                }
+                continuation.resume()
+            }
+        }
     }
 
     // MARK: - Setting UI Methods
@@ -66,22 +112,24 @@ class GameButton: UIButton {
         layer.addSublayer(shapeLayer)
 
         shapeLayer.fillColor = backgroundColor?.cgColor
-        shapeLayer.strokeColor = UIColor.white.cgColor
+        shapeLayer.strokeColor = MyColor.border.cgColor
+        shapeLayer.lineWidth = 3
+        titleLabel?.font = MyFont.button
     }
 
     // MARK: - Private Methods
     private func createBezierPathCGPath() -> CGPath {
-        let line1 = CGPoint(x: width * 0.05, y: height / 2)
-        let line2 = CGPoint(x: width * 0.15, y: height / 2)
+        let line1 = CGPoint(x: width * 0, y: height / 2)
+        let line2 = CGPoint(x: width * 0.05, y: height / 2)
 
-        let line3 = CGPoint(x: width * 0.25, y: 0)
-        let line4 = CGPoint(x: width * 0.75, y: 0)
-        let line5 = CGPoint(x: width * 0.85, y: height / 2)
-        let line6 = CGPoint(x: width * 0.75, y: height)
-        let line7 = CGPoint(x: width * 0.25, y: height)
+        let line3 = CGPoint(x: width * 0.15, y: 0)
+        let line4 = CGPoint(x: width * 0.85, y: 0)
+        let line5 = CGPoint(x: width * 0.95, y: height / 2)
+        let line6 = CGPoint(x: width * 0.85, y: height)
+        let line7 = CGPoint(x: width * 0.15, y: height)
 
-        let line8 = CGPoint(x: width * 0.15, y: height / 2)
-        let line9 = CGPoint(x: width * 0.95, y: height / 2)
+        let line8 = CGPoint(x: width * 0.05, y: height / 2)
+        let line9 = CGPoint(x: width, y: height / 2)
 
         bPath.move(to: line1)
         bPath.addLine(to: line2)
