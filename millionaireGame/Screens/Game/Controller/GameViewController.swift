@@ -62,13 +62,13 @@ final class GameViewController: UIViewController {
             textLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             textLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             textLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            textLabel.heightAnchor.constraint(equalToConstant: view.frame.height / 2)
+            textLabel.heightAnchor.constraint(equalToConstant: view.frame.height * 0.60)
         ])
 
         view.addSubview(buttonsStackView)
         NSLayoutConstraint.activate([
             buttonsStackView.topAnchor.constraint(equalTo: textLabel.bottomAnchor),
-            buttonsStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            buttonsStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10),
             buttonsStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             buttonsStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
         ])

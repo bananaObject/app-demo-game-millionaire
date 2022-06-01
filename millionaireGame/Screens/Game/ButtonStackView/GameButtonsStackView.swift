@@ -46,7 +46,7 @@ final class GameButtonsStackView: UIStackView {
     private func setupUI() {
         axis = .vertical
         distribution = .fillEqually
-        spacing = 30
+        spacing = 10
         buttonsStack.forEach { button in
             addArrangedSubview(button)
             button.addTarget(self, action: #selector(buttonAction(_ :)), for: .touchUpInside)
