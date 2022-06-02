@@ -9,6 +9,7 @@ import UIKit
 
 final class GameViewController: UIViewController {
     // MARK: - Visual Components
+    
     private let levelLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -35,9 +36,11 @@ final class GameViewController: UIViewController {
     }()
 
     // MARK: - Private Properties
+
     private let provider = GameProvider()
 
     // MARK: - Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -45,6 +48,7 @@ final class GameViewController: UIViewController {
     }
 
     // MARK: - Setting UI Methods
+
     private func setupUI() {
         buttonsStackView.delegate = self
 
@@ -74,6 +78,7 @@ final class GameViewController: UIViewController {
         ])
     }
     // MARK: - Private Methods
+    
     private func startGame() {
         Task {
             configure()
@@ -116,6 +121,7 @@ final class GameViewController: UIViewController {
 }
 
 // MARK: - GameButtonsStackViewProtocol
+
 extension GameViewController: GameButtonsStackViewProtocol {
     func levelUp(userAnswer: String) {
         provider.writeHistoryAnswer(userAnswer: userAnswer)

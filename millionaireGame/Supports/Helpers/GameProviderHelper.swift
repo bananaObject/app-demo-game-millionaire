@@ -14,6 +14,7 @@ protocol GameProviderHelper {
 
 extension GameProviderHelper {
     // MARK: - Computed Properties
+    
     var dataMoney: [String] {
         ["500", "1 000",
          "2 000", "3 000",

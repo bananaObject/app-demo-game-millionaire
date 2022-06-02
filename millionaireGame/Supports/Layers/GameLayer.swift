@@ -9,6 +9,7 @@ import Foundation
 
 final class GameLayer: ResultsCaretakerLayer {
     // MARK: - Private Properties
+
     private(set) var session: GameSessionModel?
     private(set) var results: [ResultModel] = [] {
         didSet {
@@ -19,9 +20,11 @@ final class GameLayer: ResultsCaretakerLayer {
     }
 
     // MARK: - Static Properties
+
     static var shared = GameLayer()
 
     // MARK: - Initialization
+
     private override init() {
         super.init()
         session = nil
@@ -29,6 +32,7 @@ final class GameLayer: ResultsCaretakerLayer {
     }
 
     // MARK: - Public Methods
+
     func newGame(name: String) {
         session = GameSessionModel(name: name)
     }
@@ -39,6 +43,7 @@ final class GameLayer: ResultsCaretakerLayer {
     }
 
     // MARK: - Private Methods
+    
     private func writeResult() {
         guard let session = session else { return }
         results.append(.init(name: session.name, level: session.level - 1))

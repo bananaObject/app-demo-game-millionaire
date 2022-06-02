@@ -14,13 +14,16 @@ protocol GameButtonsStackViewProtocol: AnyObject {
 
 final class GameButtonsStackView: UIStackView {
     // MARK: - Public Properties
+    
     weak var delegate: GameButtonsStackViewProtocol?
 
     // MARK: - Private Properties
+
     private var buttonsStack: [GameButton] = [GameButton(), GameButton(), GameButton(), GameButton()]
     private var correctButton: GameButton?
 
     // MARK: - Initialization
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
@@ -31,6 +34,7 @@ final class GameButtonsStackView: UIStackView {
     }
 
     // MARK: - Public Methods
+
     func configure(answers: [String], _ correctAnswer: String) {
         for (index, button) in buttonsStack.enumerated() {
             button.prepareForReuse()
@@ -43,6 +47,7 @@ final class GameButtonsStackView: UIStackView {
     }
 
     // MARK: - Private Methods
+
     private func setupUI() {
         axis = .vertical
         distribution = .fillEqually
@@ -77,6 +82,7 @@ final class GameButtonsStackView: UIStackView {
     }
 
     // MARK: - Actions
+
     @objc func buttonAction(_ sender: GameButton) {
         if correctButton == sender {
             correctAnswer(sender)

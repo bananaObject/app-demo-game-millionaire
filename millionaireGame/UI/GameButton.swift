@@ -9,6 +9,7 @@ import UIKit
 
 final class GameButton: UIButton {
     // MARK: - Computed Properties
+    
     private var height: Double {
         frame.size.height
     }
@@ -17,10 +18,12 @@ final class GameButton: UIButton {
     }
 
     // MARK: - Private Properties
+
     private let shapeLayer = CAShapeLayer()
     private let bPath = UIBezierPath()
 
     // MARK: - Initialization
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
@@ -31,6 +34,7 @@ final class GameButton: UIButton {
     }
 
     // MARK: - Override Methods
+
     override func layoutSubviews() {
         super.layoutSubviews()
         shapeLayer.path = createBezierPathCGPath()
@@ -44,6 +48,7 @@ final class GameButton: UIButton {
         return nil
     }
     // MARK: - Public Methods
+
     func prepareForReuse() {
         Task {
             shapeLayer.fillColor = backgroundColor?.cgColor
@@ -108,6 +113,7 @@ final class GameButton: UIButton {
     }
 
     // MARK: - Setting UI Methods
+
     private func setupUI() {
         layer.addSublayer(shapeLayer)
 
@@ -118,6 +124,7 @@ final class GameButton: UIButton {
     }
 
     // MARK: - Private Methods
+    
     private func createBezierPathCGPath() -> CGPath {
         let line1 = CGPoint(x: width * 0, y: height / 2)
         let line2 = CGPoint(x: width * 0.05, y: height / 2)

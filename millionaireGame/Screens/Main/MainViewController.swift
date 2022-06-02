@@ -16,6 +16,7 @@ extension MainViewController {
 
 final class MainViewController: UIViewController {
     // MARK: - Visual Components
+
     private let logoImageView: UIImageView = {
         let image = UIImage(named: MyImage.logo)
         let imageView = UIImageView()
@@ -50,12 +51,14 @@ final class MainViewController: UIViewController {
     }()
 
     // MARK: - Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
     }
 
     // MARK: - Setting UI Methods
+
     private func setupUI() {
         view.backgroundColor = MyColor.main
 
@@ -99,6 +102,7 @@ final class MainViewController: UIViewController {
     }
 
     // MARK: - Private Methods
+
     private func presentScreen(screen: Screen) {
         switch screen {
         case .game:
@@ -112,6 +116,7 @@ final class MainViewController: UIViewController {
     }
 
     // MARK: - Actions
+    
     @objc func buttonAction(_ sender: GameButton) {
         Task {
             await sender.animationChoiceAsync(fixColor: false)

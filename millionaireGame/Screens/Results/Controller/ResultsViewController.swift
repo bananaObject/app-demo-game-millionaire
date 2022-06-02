@@ -9,6 +9,7 @@ import UIKit
 
 final class ResultsViewController: UIViewController {
     // MARK: - Visual Components
+    
     private let tittleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -27,18 +28,21 @@ final class ResultsViewController: UIViewController {
     }()
 
     // MARK: - Private Properties
+
     private let data = GameLayer.shared.results
 
     // MARK: - Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         tableView.dataSource = self
-        tableView.delegate = self
+        //tableView.delegate = self
         tableView.register(ResultTableViewCell.self, forCellReuseIdentifier: ResultTableViewCell.identifier)
     }
 
     // MARK: - Setting UI Methods
+
     private func setupUI() {
         view.backgroundColor = MyColor.main
 
@@ -59,12 +63,8 @@ final class ResultsViewController: UIViewController {
     }
 }
 
-// MARK: - UITableViewDelegate
-extension ResultsViewController: UITableViewDelegate {
-
-}
-
 // MARK: - UITableViewDataSource
+
 extension ResultsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         data.count
