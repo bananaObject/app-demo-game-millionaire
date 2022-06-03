@@ -16,7 +16,7 @@ class ResultsCaretakerLayer {
     private let key = "records"
 
     // MARK: - Public Methods
-    
+
     func save(records: [ResultModel]) {
         do {
             let data = try self.encoder.encode(records)

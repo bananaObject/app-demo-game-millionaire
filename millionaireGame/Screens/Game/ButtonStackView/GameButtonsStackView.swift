@@ -14,7 +14,7 @@ protocol GameButtonsStackViewProtocol: AnyObject {
 
 final class GameButtonsStackView: UIStackView {
     // MARK: - Public Properties
-    
+
     weak var delegate: GameButtonsStackViewProtocol?
 
     // MARK: - Private Properties

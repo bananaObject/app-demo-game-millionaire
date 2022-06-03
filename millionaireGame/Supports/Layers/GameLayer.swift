@@ -43,7 +43,7 @@ final class GameLayer: ResultsCaretakerLayer {
     }
 
     // MARK: - Private Methods
-    
+
     private func writeResult() {
         guard let session = session else { return }
         results.append(.init(name: session.name, level: session.level - 1))

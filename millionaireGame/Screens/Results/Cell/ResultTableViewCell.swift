@@ -9,7 +9,7 @@ import UIKit
 
 final class ResultTableViewCell: UITableViewCell {
     // MARK: - Visual Components
-    
+
     private let nameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -59,7 +59,7 @@ final class ResultTableViewCell: UITableViewCell {
     }
 
     // MARK: - Private Methods
-    
+
     private func setupUI() {
         isUserInteractionEnabled = false
         contentView.backgroundColor = MyColor.main

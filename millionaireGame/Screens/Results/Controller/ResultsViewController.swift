@@ -9,7 +9,7 @@ import UIKit
 
 final class ResultsViewController: UIViewController {
     // MARK: - Visual Components
-    
+
     private let tittleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -37,7 +37,7 @@ final class ResultsViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         tableView.dataSource = self
-        //tableView.delegate = self
+        // tableView.delegate = self
         tableView.register(ResultTableViewCell.self, forCellReuseIdentifier: ResultTableViewCell.identifier)
     }
 

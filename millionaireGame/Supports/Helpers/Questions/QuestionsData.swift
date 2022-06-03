@@ -1,31 +1,14 @@
 //
-//  GameHelper.swift
+//  QuestionsData.swift
 //  millionaireGame
 //
-//  Created by Ke4a on 29.05.2022.
+//  Created by Ke4a on 02.06.2022.
 //
 
 import Foundation
 
-protocol GameProviderHelper {
-    var dataMoney: [String] { get }
-    var dataQuestions: [QuestionsModel] { get }
-}
-
-extension GameProviderHelper {
-    // MARK: - Computed Properties
-    
-    var dataMoney: [String] {
-        ["500", "1 000",
-         "2 000", "3 000",
-         "5 000", "10 000",
-         "15 000", "25 000",
-         "50 000", "100 000",
-         "200 000", "400 000",
-         "800 000", "1 500 000",
-         "3 000 000"]
-    }
-    var dataQuestions: [QuestionsModel] { [
+class QuestionsData {
+    private let data = [
         QuestionsModel(
             level: 0,
             questions: "Чем обмениваются новобрачные в ЗАГСе?",
@@ -82,5 +65,12 @@ extension GameProviderHelper {
                       "Зелёное",
                       "Красное"],
             correctAnswer: "Голубое")]
+
+    static var shared = QuestionsData()
+
+    private init() {}
+
+    func getData() -> [QuestionsModel] {
+        return data
     }
 }
