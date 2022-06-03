@@ -116,7 +116,7 @@ final class MainViewController: UIViewController {
     }
 
     // MARK: - Actions
-    
+
     @objc func buttonAction(_ sender: GameButton) {
         Task {
             await sender.animationChoiceAsync(fixColor: false)

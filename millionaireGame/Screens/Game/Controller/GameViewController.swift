@@ -9,7 +9,7 @@ import UIKit
 
 final class GameViewController: UIViewController {
     // MARK: - Visual Components
-    
+
     private let levelLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -77,8 +77,9 @@ final class GameViewController: UIViewController {
             buttonsStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
         ])
     }
+
     // MARK: - Private Methods
-    
+
     private func startGame() {
         Task {
             configure()

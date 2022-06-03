@@ -9,7 +9,7 @@ import UIKit
 
 final class GameButton: UIButton {
     // MARK: - Computed Properties
-    
+
     private var height: Double {
         frame.size.height
     }
@@ -124,7 +124,7 @@ final class GameButton: UIButton {
     }
 
     // MARK: - Private Methods
-    
+
     private func createBezierPathCGPath() -> CGPath {
         let line1 = CGPoint(x: width * 0, y: height / 2)
         let line2 = CGPoint(x: width * 0.05, y: height / 2)
