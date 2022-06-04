@@ -21,6 +21,14 @@ struct MyColor {
     static var border: UIColor {
         UIColor(named: "borderColor") ?? .blue
     }
+
+    static var green: UIColor {
+        UIColor.systemGreen
+    }
+
+    static var red: UIColor {
+        UIColor.systemRed
+    }
 }
 
 struct MyFont {

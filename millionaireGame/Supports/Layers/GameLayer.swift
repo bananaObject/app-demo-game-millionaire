@@ -7,10 +7,17 @@
 
 import Foundation
 
+enum Difficulty: String, CaseIterable {
+    case easy
+    case normal
+    case hard
+}
+
 final class GameLayer: ResultsCaretakerLayer {
     // MARK: - Private Properties
 
     private(set) var session: GameSessionModel?
+    private(set) var difficulty: Difficulty = .easy
     private(set) var results: [ResultModel] = [] {
         didSet {
             if !self.results.isEmpty {
@@ -40,6 +47,11 @@ final class GameLayer: ResultsCaretakerLayer {
     func endGame() {
         writeResult()
         session = nil
+    }
+
+    func changeDifficulty(_ difficulty: Difficulty) {
+        self.difficulty = difficulty
+        print(self.difficulty)
     }
 
     // MARK: - Private Methods

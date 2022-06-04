@@ -11,6 +11,7 @@ extension MainViewController {
     fileprivate enum Screen {
         case game
         case result
+        case settings
     }
 }
 
@@ -50,11 +51,22 @@ final class MainViewController: UIViewController {
         return button
     }()
 
+    private lazy var settingsButton: UIButton = {
+        var configuration = UIButton.Configuration.borderless()
+        configuration.image = UIImage(systemName: "gearshape.fill")
+
+        let button =  UIButton(configuration: configuration)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(settingsButtonAction), for: .touchUpInside)
+        return button
+    }()
+
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        addButtonNavigationBar()
     }
 
     // MARK: - Setting UI Methods
@@ -101,6 +113,15 @@ final class MainViewController: UIViewController {
          */
     }
 
+    private func addButtonNavigationBar() {
+        let addButton = UIBarButtonItem(
+            image: UIImage(systemName: "gearshape.fill"),
+            style: .plain, target: self,
+            action: #selector(settingsButtonAction))
+        addButton.tintColor = MyColor.border
+        navigationItem.setRightBarButton(addButton, animated: true)
+    }
+
     // MARK: - Private Methods
 
     private func presentScreen(screen: Screen) {
@@ -112,12 +133,15 @@ final class MainViewController: UIViewController {
         case .result:
             let controller = ResultsViewController()
             self.navigationController?.pushViewController(controller, animated: true)
+        case .settings:
+            let controller = SettingsViewController()
+            self.navigationController?.pushViewController(controller, animated: true)
         }
     }
 
     // MARK: - Actions
 
-    @objc func buttonAction(_ sender: GameButton) {
+    @objc private func buttonAction(_ sender: GameButton) {
         Task {
             await sender.animationChoiceAsync(fixColor: false)
         }
@@ -131,5 +155,9 @@ final class MainViewController: UIViewController {
             }
             sender.prepareForReuse()
         }
+    }
+
+    @objc private func settingsButtonAction() {
+        presentScreen(screen: .settings)
     }
 }

@@ -67,7 +67,7 @@ final class GameButton: UIButton {
             isEnabled = false
             let duration = 0.20
             let repeatCount: Float = 2
-            let color = correct ? UIColor.systemGreen.cgColor :  UIColor.systemRed.cgColor
+            let color = correct ? MyColor.green.cgColor :  MyColor.red.cgColor
 
             let animcolor = CABasicAnimation(keyPath: "fillColor")
             animcolor.fromValue = shapeLayer.fillColor

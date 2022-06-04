@@ -37,7 +37,7 @@ final class GameViewController: UIViewController {
 
     // MARK: - Private Properties
 
-    private let provider = GameProvider(difficulty: .hard)
+    private let provider = GameProvider()
 
     // MARK: - Lifecycle
 

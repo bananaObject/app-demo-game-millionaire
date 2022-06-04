@@ -7,13 +7,6 @@
 
 import Foundation
 
-enum Difficulty {
-    case easy
-    case normal
-    case hard
-
-}
-
 final class GameProvider {
     // MARK: - Computed Properties
 
@@ -31,7 +24,7 @@ final class GameProvider {
     var getQuestion: QuestionsModel? {
         guard let level = GameLayer.shared.session?.level else { return nil }
         do {
-            return try questionStrategy.getQuestions(level: level)
+            return try questionStrategy.getQuestion(level: level)
         } catch {
             return nil
         }
@@ -39,7 +32,9 @@ final class GameProvider {
 
     private let questionStrategy: QuestionsStrategy
 
-    init(difficulty: Difficulty) {
+    init() {
+        let difficulty = GameLayer.shared.difficulty
+
         switch difficulty {
         case .easy:
             questionStrategy = Questions()
