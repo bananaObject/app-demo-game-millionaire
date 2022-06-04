@@ -36,3 +36,7 @@ struct MyFont {
         UIFont(name: "Copperplate-Bold", size: 52) ?? .systemFont(ofSize: 20)
     }
 }
+
+enum MyError: Error {
+    case getQuestionError
+}

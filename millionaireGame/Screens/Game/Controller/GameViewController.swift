@@ -37,7 +37,7 @@ final class GameViewController: UIViewController {
 
     // MARK: - Private Properties
 
-    private let provider = GameProvider()
+    private let provider = GameProvider(difficulty: .hard)
 
     // MARK: - Lifecycle
 
@@ -82,16 +82,16 @@ final class GameViewController: UIViewController {
 
     private func startGame() {
         Task {
-            configure()
             let name = await presentNameAlertAsync()
             GameLayer.shared.newGame(name: name)
+            configure()
         }
     }
 
     private func configure() {
         levelLabel.text = provider.getMoney
 
-        let question = provider.getQuestion
+        guard let question = provider.getQuestion else { return }
         textLabel.text = question.questions
         buttonsStackView.configure(answers: question.answers, question.correctAnswer)
     }

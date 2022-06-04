@@ -28,9 +28,13 @@ final class GameProvider {
          "3 000 000"][GameLayer.shared.session?.level ?? 0]
     }
 
-    var getQuestion: QuestionsModel {
-        let level = GameLayer.shared.session?.level
-        return questionStrategy.getQuestions(level: level)
+    var getQuestion: QuestionsModel? {
+        guard let level = GameLayer.shared.session?.level else { return nil }
+        do {
+            return try questionStrategy.getQuestions(level: level)
+        } catch {
+            return nil
+        }
     }
 
     private let questionStrategy: QuestionsStrategy
@@ -54,7 +58,7 @@ final class GameProvider {
     }
 
     func writeHistoryAnswer(userAnswer answer: String) {
-        let question = getQuestion
+        guard let question = getQuestion else { return }
         GameLayer.shared.session?.history.append([question.questions, answer])
     }
 }
