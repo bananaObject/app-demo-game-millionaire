@@ -14,6 +14,7 @@
 		F21F91AC284284E500FE082E /* MyAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21F91AB284284E500FE082E /* MyAssets.swift */; };
 		F21F91B028428BDF00FE082E /* GameButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21F91AF28428BDF00FE082E /* GameButton.swift */; };
 		F2218D30284B2D0700C441DF /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2218D2F284B2D0700C441DF /* SettingsViewController.swift */; };
+		F2218D33284B5B8D00C441DF /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2218D32284B5B8D00C441DF /* Observable.swift */; };
 		F270117B2848C9CD009DD731 /* QuestionsStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F270117A2848C9CD009DD731 /* QuestionsStrategy.swift */; };
 		F270117E2848D239009DD731 /* QuestionsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F270117D2848D239009DD731 /* QuestionsData.swift */; };
 		F27011812848DB28009DD731 /* GameProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27011802848DB28009DD731 /* GameProvider.swift */; };
@@ -39,6 +40,7 @@
 		F21F91AB284284E500FE082E /* MyAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAssets.swift; sourceTree = "<group>"; };
 		F21F91AF28428BDF00FE082E /* GameButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameButton.swift; sourceTree = "<group>"; };
 		F2218D2F284B2D0700C441DF /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		F2218D32284B5B8D00C441DF /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		F270117A2848C9CD009DD731 /* QuestionsStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsStrategy.swift; sourceTree = "<group>"; };
 		F270117D2848D239009DD731 /* QuestionsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsData.swift; sourceTree = "<group>"; };
 		F27011802848DB28009DD731 /* GameProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameProvider.swift; sourceTree = "<group>"; };
@@ -92,10 +94,12 @@
 		F21F91AA284284AE00FE082E /* Supports */ = {
 			isa = PBXGroup;
 			children = (
+				F2218D31284B5B7700C441DF /* Observable */,
 				F27858B328437DEA007895C5 /* Providers */,
 				F279BE5D284646F7000ECC3A /* Layers */,
 				F279BE5728464589000ECC3A /* Helpers */,
 				F279BE5528464567000ECC3A /* My assets */,
+				F2218D32284B5B8D00C441DF /* Observable.swift */,
 			);
 			path = Supports;
 			sourceTree = "<group>";
@@ -122,6 +126,13 @@
 				F2218D2F284B2D0700C441DF /* SettingsViewController.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		F2218D31284B5B7700C441DF /* Observable */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Observable;
 			sourceTree = "<group>";
 		};
 		F22FCF8D284283D500A51851 /* Resources */ = {
@@ -377,6 +388,7 @@
 				F279BE5C28464667000ECC3A /* QuestionsModel.swift in Sources */,
 				F21F91B028428BDF00FE082E /* GameButton.swift in Sources */,
 				F21329452845FEE600BA229A /* ResultsViewController.swift in Sources */,
+				F2218D33284B5B8D00C441DF /* Observable.swift in Sources */,
 				F2218D30284B2D0700C441DF /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

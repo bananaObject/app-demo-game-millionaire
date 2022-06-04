@@ -84,16 +84,32 @@ final class GameViewController: UIViewController {
         Task {
             let name = await presentNameAlertAsync()
             GameLayer.shared.newGame(name: name)
-            configure()
+
+            GameLayer.shared.session?.level.addObserver(self,
+                                                        options: [.new, .initial]
+            ) { (level, _) in
+                self.configure(level)
+            }
         }
     }
 
-    private func configure() {
-        levelLabel.text = provider.getMoney
+    private func configure(_ level: Int) {
+        let difficulty = GameLayer.shared.difficulty
 
-        guard let question = provider.getQuestion else { return }
-        textLabel.text = question.questions
-        buttonsStackView.configure(answers: question.answers, question.correctAnswer)
+        switch difficulty {
+        case .easy:
+            levelLabel.text = provider.money[level]
+        case .normal, .hard:
+            levelLabel.text = "\(level + 1)/15"
+        }
+
+        do {
+            let question = try provider.getQuestion(level)
+            textLabel.text = question.questions
+            buttonsStackView.configure(answers: question.answers, question.correctAnswer)
+        } catch {
+            print(error)
+        }
     }
 
     private func presentNameAlertAsync() async -> String {
@@ -127,7 +143,6 @@ extension GameViewController: GameButtonsStackViewProtocol {
     func levelUp(userAnswer: String) {
         provider.writeHistoryAnswer(userAnswer: userAnswer)
         provider.levelUp()
-        configure()
     }
 
     func endGame(userAnswer: String) {

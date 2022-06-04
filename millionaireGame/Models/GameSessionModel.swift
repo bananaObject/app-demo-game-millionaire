@@ -9,7 +9,7 @@ import Foundation
 
 final class GameSessionModel {
     var name: String
-    var level: Int = 0
+    var level: Observable<Int> = Observable<Int>(0)
     var history: [[String]] = []
 
     init(name: String) {
