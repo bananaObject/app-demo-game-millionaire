@@ -85,8 +85,9 @@ final class GameViewController: UIViewController {
             let name = await presentNameAlertAsync()
             GameLayer.shared.newGame(name: name)
 
-            GameLayer.shared.session?.level.addObserver(self,
-                                                        options: [.new, .initial]
+            GameLayer.shared.session?.level.addObserver(
+                self,
+                options: [.new, .initial]
             ) { (level, _) in
                 self.configure(level)
             }
@@ -141,12 +142,17 @@ final class GameViewController: UIViewController {
 
 extension GameViewController: GameButtonsStackViewProtocol {
     func levelUp(userAnswer: String) {
-        provider.writeHistoryAnswer(userAnswer: userAnswer)
+        if let question = textLabel.text {
+            provider.writeHistoryAnswer(question: question, userAnswer: userAnswer)
+        }
+
         provider.levelUp()
     }
 
     func endGame(userAnswer: String) {
-        provider.writeHistoryAnswer(userAnswer: userAnswer)
+        if let question = textLabel.text {
+            provider.writeHistoryAnswer(question: question, userAnswer: userAnswer)
+        }
         provider.endgame()
         dismiss(animated: true)
     }

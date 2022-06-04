@@ -45,9 +45,8 @@ final class GameProvider {
         GameLayer.shared.endGame()
     }
 
-    func writeHistoryAnswer(userAnswer answer: String) {
-        //guard let question = getQuestion else { return }
-        //GameLayer.shared.session?.history.append([question.questions, answer])
+    func writeHistoryAnswer(question: String, userAnswer answer: String) {
+        GameLayer.shared.session?.history.append([question, answer])
     }
 
     func getQuestion(_ level: Int) throws -> QuestionsModel {
