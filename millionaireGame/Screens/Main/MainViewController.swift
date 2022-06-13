@@ -12,6 +12,7 @@ extension MainViewController {
         case game
         case result
         case settings
+        case addQuestions
     }
 }
 
@@ -51,13 +52,11 @@ final class MainViewController: UIViewController {
         return button
     }()
 
-    private lazy var settingsButton: UIButton = {
-        var configuration = UIButton.Configuration.borderless()
-        configuration.image = UIImage(systemName: "gearshape.fill")
-
-        let button =  UIButton(configuration: configuration)
+    private lazy var addQuestionsButton: GameButton = {
+        let button =  GameButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(settingsButtonAction), for: .touchUpInside)
+        button.setTextButton(text: "Add questions")
+        button.addTarget(self, action: #selector(buttonAction(_ : )), for: .touchUpInside)
         return button
     }()
 
@@ -102,6 +101,14 @@ final class MainViewController: UIViewController {
             resultsButton.trailingAnchor.constraint(equalTo: newGameButton.trailingAnchor)
         ])
 
+        view.addSubview(addQuestionsButton)
+        NSLayoutConstraint.activate([
+            addQuestionsButton.topAnchor.constraint(equalTo: resultsButton.bottomAnchor, constant: 10),
+            addQuestionsButton.heightAnchor.constraint(equalTo: resultsButton.heightAnchor),
+            addQuestionsButton.leadingAnchor.constraint(equalTo: resultsButton.leadingAnchor),
+            addQuestionsButton.trailingAnchor.constraint(equalTo: resultsButton.trailingAnchor)
+        ])
+
         /*
         view.addSubview(continueGameButton)
         NSLayoutConstraint.activate([
@@ -136,6 +143,9 @@ final class MainViewController: UIViewController {
         case .settings:
             let controller = SettingsViewController()
             self.navigationController?.pushViewController(controller, animated: true)
+        case .addQuestions:
+            let controller = AddQuestionsViewController()
+            self.navigationController?.pushViewController(controller, animated: true)
         }
     }
 
@@ -148,10 +158,15 @@ final class MainViewController: UIViewController {
         Task {
             await sender.animationAnswerAsync(isCorrectAnswer: true, fixColor: false)
 
-            if sender == newGameButton {
+            switch sender {
+            case newGameButton:
                 presentScreen(screen: .game)
-            } else if sender == resultsButton {
+            case resultsButton:
                 presentScreen(screen: .result)
+            case addQuestionsButton:
+                presentScreen(screen: .addQuestions)
+            default:
+                break
             }
             sender.prepareForReuse()
         }

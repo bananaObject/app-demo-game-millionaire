@@ -9,57 +9,57 @@ import Foundation
 
 class QuestionsData {
     private let data = [
-        QuestionsModel(
+        QuestionModel(
             level: 0,
-            questions: "Чем обмениваются новобрачные в ЗАГСе?",
+            question: "Чем обмениваются новобрачные в ЗАГСе?",
             answers: ["Телефонами",
                       "Фотографиями",
                       "Кольцами",
                       "Рукопожатиями"],
             correctAnswer: "Кольцами"),
-        QuestionsModel(
+        QuestionModel(
             level: 1,
-            questions: "Что делает парикмахер на голове клиента?",
+            question: "Что делает парикмахер на голове клиента?",
             answers: ["Воронку",
                       "Стрижку",
                       "Попугайку",
                       "Ласточку"],
             correctAnswer: "Стрижку"),
-        QuestionsModel(
+        QuestionModel(
             level: 2,
-            questions: "Что держит в руке американская статуя Свободы?",
+            question: "Что держит в руке американская статуя Свободы?",
             answers: ["Фонарь",
                       "Канделябр",
                       "Факел",
                       "Зажигалку"],
             correctAnswer: "Факел"),
-        QuestionsModel(
+        QuestionModel(
             level: 3,
-            questions: "Что является характеристикой коллекционного вина?",
+            question: "Что является характеристикой коллекционного вина?",
             answers: ["Стойкость",
                       "Выносливость",
                       "Выдержка",
                       "Трезвость"],
             correctAnswer: "Выдержка"),
-        QuestionsModel(
+        QuestionModel(
             level: 4,
-            questions: "Какая нота дважды встречалась в названии фильма Георгия Данелии?",
+            question: "Какая нота дважды встречалась в названии фильма Георгия Данелии?",
             answers: ["До",
                       "Ре",
                       "Фа",
                       "Ми"],
             correctAnswer: "Ми"),
-        QuestionsModel(
+        QuestionModel(
             level: 5,
-            questions: "В какое море впадает Хуанхэ — Жёлтая река?",
+            question: "В какое море впадает Хуанхэ — Жёлтая река?",
             answers: ["В Красное",
                       "В Жёлтое",
                       "В Белое",
                       "В Чёрное"],
             correctAnswer: "В Жёлтое"),
-        QuestionsModel(
+        QuestionModel(
             level: 6,
-            questions: "Кольцо какого цвета на олимпийском флаге символизирует Европу?",
+            question: "Кольцо какого цвета на олимпийском флаге символизирует Европу?",
             answers: ["Голубое",
                       "Жёлтое",
                       "Зелёное",
@@ -70,7 +70,7 @@ class QuestionsData {
 
     private init() {}
 
-    func getData() -> [QuestionsModel] {
-        return data
+    func getData() -> [QuestionModel] {
+        return data + GameLayer.shared.userQuestions
     }
 }

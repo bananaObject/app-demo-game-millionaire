@@ -49,7 +49,7 @@ final class GameProvider {
         GameLayer.shared.session?.history.append([question, answer])
     }
 
-    func getQuestion(_ level: Int) throws -> QuestionsModel {
+    func getQuestion(_ level: Int) throws -> QuestionModel {
         return try questionStrategy.getQuestion(level: level)
     }
 }

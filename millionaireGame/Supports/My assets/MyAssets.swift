@@ -41,7 +41,11 @@ struct MyFont {
     }
 
     static var title: UIFont {
-        UIFont(name: "Copperplate-Bold", size: 52) ?? .systemFont(ofSize: 20)
+        UIFont(name: "Copperplate-Bold", size: 36) ?? .systemFont(ofSize: 20)
+    }
+
+    static var question: UIFont {
+        UIFont(name: "Copperplate-Bold", size: 16) ?? .systemFont(ofSize: 20)
     }
 }
 

@@ -32,6 +32,16 @@ class SettingsViewController: UIViewController {
         return control
     }()
 
+    private let textLabel: UILabel = {
+        let label = UILabel()
+        label.font = MyFont.question
+        label.textColor = .white
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
     private let difficultyCases = Difficulty.allCases
 
     // MARK: - Lifecycle
@@ -59,6 +69,14 @@ class SettingsViewController: UIViewController {
             segmentLabel.bottomAnchor.constraint(equalTo: segmentedControl.topAnchor),
             segmentLabel.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor)
         ])
+
+        view.addSubview(textLabel)
+        NSLayoutConstraint.activate([
+            textLabel.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 10),
+            textLabel.centerXAnchor.constraint(equalTo: segmentedControl.centerXAnchor),
+            textLabel.heightAnchor.constraint(equalToConstant: 100),
+            textLabel.widthAnchor.constraint(equalTo: view.widthAnchor)
+        ])
     }
 
     private func setupSegmentControl() {
@@ -75,6 +93,12 @@ class SettingsViewController: UIViewController {
 
     @objc private func handleSegmentedControlChange(_ sender: UISegmentedControl) {
         let difficulty = difficultyCases[sender.selectedSegmentIndex]
+        switch difficulty {
+        case .normal, .hard:
+            textLabel.text = "Вопросы в рандомном порядке + вопросы юзера"
+        case .easy:
+            textLabel.text = nil
+        }
         GameLayer.shared.changeDifficulty(difficulty)
     }
 

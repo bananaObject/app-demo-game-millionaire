@@ -8,13 +8,13 @@
 import Foundation
 
 protocol QuestionsStrategy {
-    func getQuestion(level: Int) throws -> QuestionsModel
+    func getQuestion(level: Int) throws -> QuestionModel
 }
 
 final class Questions: QuestionsStrategy {
-    private let data: [QuestionsModel] = QuestionsData.shared.getData()
+    private let data: [QuestionModel] = QuestionsData.shared.getData()
 
-    func getQuestion(level: Int) throws -> QuestionsModel {
+    func getQuestion(level: Int) throws -> QuestionModel {
         guard level <= data.count - 1 else { throw MyError.getQuestionError }
 
         return data[level]
@@ -22,12 +22,12 @@ final class Questions: QuestionsStrategy {
 }
 
 final class QuestionsRandom: QuestionsStrategy {
-    private var data: [QuestionsModel] = {
+    private var data: [QuestionModel] = {
         var array = QuestionsData.shared.getData()
         return array.shuffled()
     }()
 
-    func getQuestion(level: Int) throws -> QuestionsModel {
+    func getQuestion(level: Int) throws -> QuestionModel {
         guard level <= data.count - 1 else { throw MyError.getQuestionError }
 
         return data[level]

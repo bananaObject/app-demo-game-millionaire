@@ -10,16 +10,6 @@ import UIKit
 final class ResultsViewController: UIViewController {
     // MARK: - Visual Components
 
-    private let tittleLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = MyFont.title
-        label.textAlignment = .center
-        label.textColor = .white
-        label.text = "Results"
-        return label
-    }()
-
     private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -44,18 +34,18 @@ final class ResultsViewController: UIViewController {
     // MARK: - Setting UI Methods
 
     private func setupUI() {
-        view.backgroundColor = MyColor.main
 
-        view.addSubview(tittleLabel)
-        NSLayoutConstraint.activate([
-            tittleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            tittleLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            tittleLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
-        ])
+        title = "Results"
+        navigationController?.navigationBar.backgroundColor = MyColor.main
+        navigationController?.navigationBar.titleTextAttributes = [
+            NSAttributedString.Key.foregroundColor: UIColor.white,
+            NSAttributedString.Key.font: MyFont.title]
+
+        view.backgroundColor = MyColor.main
 
         view.addSubview(tableView)
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: tittleLabel.bottomAnchor, constant: 10),
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)

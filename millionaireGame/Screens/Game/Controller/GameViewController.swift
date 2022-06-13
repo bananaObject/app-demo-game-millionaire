@@ -106,7 +106,7 @@ final class GameViewController: UIViewController {
 
         do {
             let question = try provider.getQuestion(level)
-            textLabel.text = question.questions
+            textLabel.text = question.question
             buttonsStackView.configure(answers: question.answers, question.correctAnswer)
         } catch {
             print(error)
