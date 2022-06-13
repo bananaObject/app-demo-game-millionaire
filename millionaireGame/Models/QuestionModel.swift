@@ -8,8 +8,8 @@
 import Foundation
 
 struct QuestionModel: CaretakerModelMarker {
-    let level: Int
-    let question: String
-    let answers: [String]
-    let correctAnswer: String
+    var level: Int
+    var question: String
+    var answers: [String]
+    var correctAnswer: String
 }

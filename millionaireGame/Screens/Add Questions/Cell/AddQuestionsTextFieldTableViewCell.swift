@@ -26,6 +26,8 @@ class AddQuestionsTextFieldTableViewCell: AddQuestionsBaseTableViewCell {
         return stack
     }()
 
+    private var question = QuestionModel(level: 0, question: "", answers: ["", "", "", ""], correctAnswer: "")
+
     // MARK: - Static Properties
 
     static var identifier: String = "AddQuestionsTableViewCell"
@@ -36,6 +38,13 @@ class AddQuestionsTextFieldTableViewCell: AddQuestionsBaseTableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
         setupUI()
+
+        questionTextField.delegate = self
+
+        answerStackView.arrangedSubviews.forEach { view in
+            let textField = view as? UITextField
+            textField?.delegate = self
+        }
     }
 
     required init?(coder: NSCoder) {
@@ -77,21 +86,35 @@ class AddQuestionsTextFieldTableViewCell: AddQuestionsBaseTableViewCell {
     }
 
     // MARK: - Public Methods
-    
+
     func buildQuestion() throws -> QuestionModel? {
-        guard let question = questionTextField.text, !question.isEmpty,
-              let stack = answerStackView.arrangedSubviews as? [UITextField],
-              let correctAnswer = stack[0].text, !correctAnswer.isEmpty,
-              let wrongAnswer1 = stack[1].text, !wrongAnswer1.isEmpty,
-              let wrongAnswer2 = stack[2].text, !wrongAnswer2.isEmpty,
-              let wrongAnswer3 = stack[3].text, !wrongAnswer3.isEmpty
+        guard !self.question.question.isEmpty,
+              !question.correctAnswer.isEmpty,
+              !question.answers[0].isEmpty,
+              !question.answers[1].isEmpty,
+              !question.answers[2].isEmpty,
+              !question.answers[3].isEmpty
         else { throw MyError.getQuestionError }
 
-        return QuestionModel(level: 0, question: question, answers: [
-            correctAnswer,
-            wrongAnswer1,
-            wrongAnswer2,
-            wrongAnswer3
-        ], correctAnswer: correctAnswer)
+        return question
+    }
+}
+
+extension AddQuestionsTextFieldTableViewCell: UITextFieldDelegate {
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        guard let text = textField.text else { return }
+
+        if textField == self.questionTextField {
+            question.question = text
+        } else if textField == answerStackView.arrangedSubviews[0] {
+            question.correctAnswer = text
+            question.answers[0] = text
+        } else if textField == answerStackView.arrangedSubviews[1] {
+            question.answers[1] = text
+        } else if textField == answerStackView.arrangedSubviews[2] {
+            question.answers[2] = text
+        } else if textField == answerStackView.arrangedSubviews[3] {
+            question.answers[3] = text
+        }
     }
 }
