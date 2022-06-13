@@ -105,7 +105,7 @@ class AddQuestionsViewController: UIViewController {
             as? AddQuestionsTextFieldTableViewCell
 
             do {
-                if let question = try cell?.getQuestionUser() {
+                if let question = try cell?.buildQuestion() {
                     insertIndex.append(IndexPath(row: insertIndex.count, section: 0))
                     questions.append(question)
                 }

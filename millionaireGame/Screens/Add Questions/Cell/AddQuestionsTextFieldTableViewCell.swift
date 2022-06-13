@@ -78,7 +78,7 @@ class AddQuestionsTextFieldTableViewCell: AddQuestionsBaseTableViewCell {
 
     // MARK: - Public Methods
     
-    func getQuestionUser() throws -> QuestionModel? {
+    func buildQuestion() throws -> QuestionModel? {
         guard let question = questionTextField.text, !question.isEmpty,
               let stack = answerStackView.arrangedSubviews as? [UITextField],
               let correctAnswer = stack[0].text, !correctAnswer.isEmpty,
