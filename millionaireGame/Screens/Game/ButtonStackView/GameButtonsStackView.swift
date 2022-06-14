@@ -83,7 +83,7 @@ final class GameButtonsStackView: UIStackView {
 
     // MARK: - Actions
 
-    @objc func buttonAction(_ sender: GameButton) {
+    @objc private func buttonAction(_ sender: GameButton) {
         if correctButton == sender {
             correctAnswer(sender)
         } else {

@@ -11,6 +11,8 @@ extension MainViewController {
     fileprivate enum Screen {
         case game
         case result
+        case settings
+        case addQuestions
     }
 }
 
@@ -50,11 +52,20 @@ final class MainViewController: UIViewController {
         return button
     }()
 
+    private lazy var addQuestionsButton: GameButton = {
+        let button =  GameButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTextButton(text: "Add questions")
+        button.addTarget(self, action: #selector(buttonAction(_ : )), for: .touchUpInside)
+        return button
+    }()
+
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        addButtonNavigationBar()
     }
 
     // MARK: - Setting UI Methods
@@ -90,6 +101,14 @@ final class MainViewController: UIViewController {
             resultsButton.trailingAnchor.constraint(equalTo: newGameButton.trailingAnchor)
         ])
 
+        view.addSubview(addQuestionsButton)
+        NSLayoutConstraint.activate([
+            addQuestionsButton.topAnchor.constraint(equalTo: resultsButton.bottomAnchor, constant: 10),
+            addQuestionsButton.heightAnchor.constraint(equalTo: resultsButton.heightAnchor),
+            addQuestionsButton.leadingAnchor.constraint(equalTo: resultsButton.leadingAnchor),
+            addQuestionsButton.trailingAnchor.constraint(equalTo: resultsButton.trailingAnchor)
+        ])
+
         /*
         view.addSubview(continueGameButton)
         NSLayoutConstraint.activate([
@@ -99,6 +118,15 @@ final class MainViewController: UIViewController {
             continueGameButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 0)
         ])
          */
+    }
+
+    private func addButtonNavigationBar() {
+        let addButton = UIBarButtonItem(
+            image: UIImage(systemName: "gearshape.fill"),
+            style: .plain, target: self,
+            action: #selector(settingsButtonAction))
+        addButton.tintColor = MyColor.border
+        navigationItem.setRightBarButton(addButton, animated: true)
     }
 
     // MARK: - Private Methods
@@ -112,24 +140,39 @@ final class MainViewController: UIViewController {
         case .result:
             let controller = ResultsViewController()
             self.navigationController?.pushViewController(controller, animated: true)
+        case .settings:
+            let controller = SettingsViewController()
+            self.navigationController?.pushViewController(controller, animated: true)
+        case .addQuestions:
+            let controller = AddQuestionsViewController()
+            self.navigationController?.pushViewController(controller, animated: true)
         }
     }
 
     // MARK: - Actions
 
-    @objc func buttonAction(_ sender: GameButton) {
+    @objc private func buttonAction(_ sender: GameButton) {
         Task {
             await sender.animationChoiceAsync(fixColor: false)
         }
         Task {
             await sender.animationAnswerAsync(isCorrectAnswer: true, fixColor: false)
 
-            if sender == newGameButton {
+            switch sender {
+            case newGameButton:
                 presentScreen(screen: .game)
-            } else if sender == resultsButton {
+            case resultsButton:
                 presentScreen(screen: .result)
+            case addQuestionsButton:
+                presentScreen(screen: .addQuestions)
+            default:
+                break
             }
             sender.prepareForReuse()
         }
+    }
+
+    @objc private func settingsButtonAction() {
+        presentScreen(screen: .settings)
     }
 }

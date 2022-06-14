@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ResultModel: Codable {
+struct ResultModel: CaretakerModelMarker {
     let name: String
     let level: Int
 
