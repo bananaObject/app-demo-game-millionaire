@@ -100,6 +100,8 @@ class AddQuestionsTextFieldTableViewCell: AddQuestionsBaseTableViewCell {
     }
 }
 
+// MARK: - Delegate
+
 extension AddQuestionsTextFieldTableViewCell: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         guard let text = textField.text else { return }
