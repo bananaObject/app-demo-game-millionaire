@@ -114,7 +114,7 @@ class AddQuestionsViewController: UIViewController {
             }
         }
 
-        dataTextField = []
+        dataTextField.removeAll()
         tableView.deleteRows(at: deleteIndex, with: .right)
         GameLayer.shared.addUserQuestion(questions)
         tableView.insertRows(at: insertIndex, with: .automatic)
