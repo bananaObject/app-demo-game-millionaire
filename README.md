@@ -58,5 +58,5 @@
 * MVС
 * pattern Observer
 * UserDefaults
-* CABasicAnimation
+* CoreAnimation
 * Namespace
