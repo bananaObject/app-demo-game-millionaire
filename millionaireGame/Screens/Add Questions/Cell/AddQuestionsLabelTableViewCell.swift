@@ -46,6 +46,7 @@ class AddQuestionsLabelTableViewCell: AddQuestionsBaseTableViewCell {
     // MARK: - Setting UI Methods
 
     private func setupUI() {
+        trashButton.setImage(UIImage(systemName: "trash.fill"), for: .normal)
         contentView.addSubview(questionLabel)
         NSLayoutConstraint.activate([
             questionLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),

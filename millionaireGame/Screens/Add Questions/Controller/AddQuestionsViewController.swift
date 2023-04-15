@@ -42,6 +42,7 @@ class AddQuestionsViewController: UIViewController {
         setupUI()
         addNavigationBarButton()
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.register(AddQuestionsTextFieldTableViewCell.self,
                            forCellReuseIdentifier: AddQuestionsTextFieldTableViewCell.identifier)
         tableView.register(AddQuestionsLabelTableViewCell.self,
@@ -118,6 +119,14 @@ class AddQuestionsViewController: UIViewController {
         tableView.deleteRows(at: deleteIndex, with: .right)
         GameLayer.shared.addUserQuestion(questions)
         tableView.insertRows(at: insertIndex, with: .automatic)
+    }
+}
+
+// MARK: - UITableViewDelegate
+
+extension AddQuestionsViewController: UITableViewDelegate {
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        tableView.endEditing(false)
     }
 }
 

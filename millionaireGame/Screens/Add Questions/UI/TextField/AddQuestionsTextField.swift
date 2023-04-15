@@ -10,10 +10,11 @@ import UIKit
 class AddQuestionsTextField: UITextField {
     // MARK: - Initialization
 
-    init(_ part: PartQuestion) {
+    init(_ part: PartQuestion, returnKeyType: UIReturnKeyType) {
         super.init(frame: .zero)
         setupUI()
         setPlaceholder(part)
+        self.returnKeyType = returnKeyType
     }
 
     required init?(coder: NSCoder) {

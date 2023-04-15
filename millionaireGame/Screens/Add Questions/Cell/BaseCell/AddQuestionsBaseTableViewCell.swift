@@ -16,7 +16,6 @@ class AddQuestionsBaseTableViewCell: UITableViewCell {
 
     lazy var trashButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(systemName: "trash.fill"), for: .normal)
         button.tintColor = MyColor.main
         button.backgroundColor = MyColor.red
         button.layer.cornerRadius = 5.0
