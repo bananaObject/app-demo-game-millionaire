@@ -11,17 +11,17 @@ class AddQuestionsTextFieldTableViewCell: AddQuestionsBaseTableViewCell {
     // MARK: - Visual Components
 
     private let questionTextField: AddQuestionsTextField = {
-        let textField = AddQuestionsTextField(.question)
+        let textField = AddQuestionsTextField(.question, returnKeyType: .next)
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
 
     private let answerStackView: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [
-            AddQuestionsTextField(.correctAnswer),
-            AddQuestionsTextField(.wrongAnswer),
-            AddQuestionsTextField(.wrongAnswer),
-            AddQuestionsTextField(.wrongAnswer)])
+            AddQuestionsTextField(.correctAnswer, returnKeyType: .next),
+            AddQuestionsTextField(.wrongAnswer, returnKeyType: .next),
+            AddQuestionsTextField(.wrongAnswer, returnKeyType: .next),
+            AddQuestionsTextField(.wrongAnswer, returnKeyType: .continue)])
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
@@ -65,6 +65,7 @@ class AddQuestionsTextFieldTableViewCell: AddQuestionsBaseTableViewCell {
     // MARK: - Setting UI Methods
 
     private func setupUI() {
+        trashButton.setImage(UIImage(systemName: "xmark.circle.fill"), for: .normal)
         contentView.addSubview(questionTextField)
         NSLayoutConstraint.activate([
             questionTextField.topAnchor.constraint(equalTo: contentView.topAnchor),
@@ -98,6 +99,24 @@ class AddQuestionsTextFieldTableViewCell: AddQuestionsBaseTableViewCell {
 
         return question
     }
+
+    // MARK: - Private Methods
+
+    func nextResponder(current responder: UIView) -> Bool {
+        let subviews = answerStackView.subviews
+        guard let index = responder == questionTextField ? -1 : subviews.firstIndex(where: { $0.isFirstResponder }),
+              index < subviews.endIndex - 1,
+              let nextResponder = subviews[index + 1..<subviews.endIndex].first(where: { $0.canBecomeFirstResponder })
+        else {
+            responder.resignFirstResponder()
+            return false
+        }
+
+        nextResponder.becomeFirstResponder()
+
+        return true
+    }
+
 }
 
 // MARK: - Delegate
@@ -118,5 +137,9 @@ extension AddQuestionsTextFieldTableViewCell: UITextFieldDelegate {
         } else if textField == answerStackView.arrangedSubviews[3] {
             question.answers[3] = text
         }
+    }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        nextResponder(current: textField)
     }
 }

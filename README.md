@@ -54,9 +54,10 @@
 В приложении соблюдается стиль тв программы. [Кастомная анимированная **кнопка**](millionaireGame/UI/GameButton.swift) **создана с использованием UIBezierPath и CABasicAnimation**.
 
 # Технологии
+* Swift
 * UIKit (UI programmatically | Auto Layout)
 * MVС
-* pattern Observer
-* UserDefaults
+* Pattern Observer
 * CoreAnimation
+* UserDefaults
 * Namespace
